@@ -1,0 +1,172 @@
+import java.util.Random;
+import java.util.Scanner;
+public class Jogo_Tabuada {
+	
+	public static void main(String[] args) {
+		
+		//vars para a repeticao;
+		
+		int repetirminigame = 1;
+		
+		//vars de classes importadas;
+		
+        Scanner respostadouser = new Scanner(System.in);
+		
+		Random random = new Random();
+		int numero = random.nextInt(10);
+		numero = numero + 1;
+		
+		//vars comuns;
+		
+		int repeticao = 1;
+		int result;
+		int num1;
+		int numerode1aX;
+		int pts = 0;
+		int rodadas = 0;
+		
+		//código;
+		
+		//Parte 1 - Rodadas e escolha inicial;
+		
+		while (repetirminigame == 1) {
+		
+		System.out.println("Bem vindo ao Multi-Game, qual o modo de jogo que deseja?");
+		System.out.println("Você deseja personalizar seu jogo ou jogar uma partida definida pelo computador?");
+		System.out.println("( 1 ) Jogo Personalizado, você escolher o limite dos numeros");
+		System.out.println("( 2 ) Jogo classico, 10 partidas, a mais facil é 1 * 1 e a mais dificil 20 * 20");
+		int mododejogo = respostadouser.nextInt();
+		
+		System.out.println(" ");
+		
+		
+		
+		//escolha 1 - Person;
+		
+		if (mododejogo == 1) {
+			
+			System.out.println("quantas partidas deseja?");
+			rodadas = respostadouser.nextInt();
+			
+			System.out.println(" ");
+		
+			System.out.println("Qual será o limite do número base da tabuada?");
+			int var1 = respostadouser.nextInt();
+			
+			System.out.println(" ");
+			
+			System.out.println("Qual será o limite do número multiplicador?");
+			int var2 = respostadouser.nextInt();
+			
+			System.out.println(" ");
+			
+			while (repeticao <= rodadas) {
+				
+				System.out.println("pontos: " + pts + " / " + rodadas);
+				System.out.println("Rodadas : " + repeticao + " / " + rodadas);
+				System.out.println(" ");
+				
+				num1 = random.nextInt(var1);
+				numerode1aX = random.nextInt(var2);
+				
+				num1 ++;
+				numerode1aX ++;
+				
+				result = num1 * numerode1aX;
+				System.out.println(num1 + " * " + numerode1aX + " = ");
+				int respostauser = respostadouser.nextInt();
+				
+				if (respostauser == result) {
+					
+					System.out.println("Está correto, você ganhou um ponto!");
+					System.out.println(" ");
+					pts ++;
+					
+				} else {
+					
+					System.out.println("Incorreto! O resultado correto é " + result);
+					System.out.println(" ");
+					
+				}
+				
+				repeticao ++;
+				
+			}
+			
+			System.out.println("Jogo finalizado...");
+			System.out.println("pontos: " + pts + " / " + rodadas);
+			
+		}
+		
+		//escolha 2 - Classic;
+		
+		if (mododejogo == 2) {
+			
+			while (repeticao <= 10) {
+				
+				System.out.println("pontos: " + pts + " / " + rodadas);
+				System.out.println("Rodadas : " + repeticao + " / " + rodadas);
+				System.out.println(" ");
+				
+				num1 = random.nextInt(20);
+				numerode1aX = random.nextInt(20);
+				
+				num1 ++;
+				numerode1aX ++;
+				rodadas = 10;
+				
+				result = num1 * numerode1aX;
+				System.out.println(num1 + " * " + numerode1aX + " = ");
+				int respostauser = respostadouser.nextInt();
+				
+				if (respostauser == result) {
+					
+					System.out.println("Está correto, você ganhou um ponto!");
+					System.out.println(" ");
+					pts ++;
+					
+				} else {
+					
+					System.out.println("Incorreto! O resultado correto é " + result);
+					System.out.println(" ");
+					
+				}
+				
+				repeticao ++;
+				
+			}
+			
+			System.out.println("Jogo finalizado...");
+			System.out.println("pontos: " + pts + " / " + rodadas);
+			
+		}
+		
+		//var "mododejogo" nao correspondente;
+		
+		if ((mododejogo != 1) && (mododejogo != 2)) {
+			
+			System.out.println("Este modo de jogo não existe! Tente os já citados");
+			
+		}
+		
+		System.out.println("Digite '1' se quiser parar de jogar");
+		System.out.println("Digite qualquer outro numero para continuar");
+		
+		int repetirbi = respostadouser.nextInt();
+		
+		if (repetirbi == 1) {
+			
+			repetirminigame ++;
+			
+			System.out.println(" ");
+			
+		} else {
+			
+		}
+		
+		}
+		
+		respostadouser.close();
+	}
+	
+}
